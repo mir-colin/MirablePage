@@ -1,0 +1,382 @@
+/* 
+  Mirable Premium Hybrid Design System v5
+  Concept: Classic Mirable Red Meets Innovative Pearl
+*/
+
+:root {
+    --primary-red: #D32F2F; 
+    --deep-red: #B71C1C;
+    --light-red: #FFEBEE;
+    --text-dark: #1A1A1A;
+    --text-muted: #666666;
+    --pearl-bg: #FFFFFF;
+    
+    --nacre-gradient: linear-gradient(
+        110deg,
+        #D32F2F 0%,
+        #FF8A80 25%,
+        #80D8FF 50%,
+        #B9F6CA 75%,
+        #D32F2F 100%
+    );
+    
+    --font-main: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Language Control */
+html[lang="en"] .lang-ko { display: none !important; }
+html[lang="ko"] .lang-en { display: none !important; }
+
+/* Korean Typography Optimization */
+html[lang="ko"] {
+    word-break: keep-all;
+}
+
+html[lang="ko"] body {
+    font-size: 0.95rem; /* Slightly smaller base */
+}
+
+html[lang="ko"] .hero h1 {
+    font-size: clamp(2.8rem, 8.5vw, 6.2rem); /* Reduced from 3.5rem-7.5rem */
+    letter-spacing: -1.5px;
+    line-height: 1.15; /* Increased line-height for better spacing in KO */
+}
+
+html[lang="ko"] .section-title {
+    font-size: clamp(2rem, 4.5vw, 3rem); /* Reduced from 2.5rem-3.5rem */
+}
+
+html[lang="ko"] .value-card h3 {
+    font-size: 1.6rem; /* Reduced from 1.8rem */
+}
+
+html[lang="ko"] .value-card p {
+    font-size: 0.95rem; /* Reduced from 1.05rem */
+    line-height: 1.7;
+}
+
+html[lang="ko"] .hero p {
+    font-size: 1.2rem; /* Reduced from 1.4rem */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--pearl-bg);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+    word-break: keep-all;
+}
+
+/* Background Texture */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* --- Navigation (Hybrid: Stable + Modern) --- */
+nav {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(211, 47, 47, 0.1);
+    border-radius: 100px;
+    transition: var(--transition);
+}
+
+nav:hover {
+    width: 92%;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.logo img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.lang-toggle {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    background: rgba(211, 47, 47, 0.05);
+    transition: var(--transition);
+}
+
+.lang-toggle span {
+    transition: var(--transition);
+}
+
+.lang-toggle .divider {
+    opacity: 0.3;
+    font-weight: 400;
+}
+
+html[lang="en"] .lang-toggle span[data-lang="en"],
+html[lang="ko"] .lang-toggle span[data-lang="ko"] {
+    color: var(--primary-red);
+}
+
+.nav-links .btn-mirable {
+    padding: 0.7rem 1.8rem;
+    background: var(--primary-red);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 100px; /* Rounded to match Nav */
+    transition: var(--transition);
+}
+
+.nav-links .btn-mirable:hover {
+    background: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+/* --- Hero Section (Preserving the Vibe) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pearl-texture {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: var(--nacre-gradient);
+    background-size: 200% 200%;
+    animation: nacre-flow 36s infinite ease-in-out; /* 3x slower (from 12s) */
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+@keyframes nacre-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    line-height: 0.95;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    letter-spacing: -3px;
+    color: var(--text-dark);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.nacre-text {
+    background: var(--nacre-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: nacre-flow 30s infinite linear; /* 3x slower (from 10s) */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.hero p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* --- Philosophy Section (Premium Grid) --- */
+#values {
+    padding: 10rem 8%;
+    background: white;
+    text-align: center;
+}
+
+.section-label {
+    color: var(--primary-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 5rem;
+    color: var(--text-dark);
+    letter-spacing: -1.5px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.value-card {
+    padding: 4rem 2.5rem;
+    background: #fff;
+    border: 1px solid rgba(211, 47, 47, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.value-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--nacre-gradient);
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 0;
+}
+
+.value-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary-red);
+    box-shadow: 0 20px 40px rgba(211, 47, 47, 0.1);
+}
+
+.value-card:hover::before {
+    opacity: 0.05;
+    animation: nacre-flow 15s infinite linear; /* 3x slower (from 5s) */
+}
+
+.value-card .number {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    margin-bottom: 1.5rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.value-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.value-card p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- CTA Section --- */
+.cta-section {
+    padding: 10rem 8%;
+    background: var(--light-red);
+    text-align: center;
+}
+
+.btn-large {
+    padding: 1.2rem 3.5rem;
+    background: var(--primary-red);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 100px; /* Rounded to match Nav */
+    transition: var(--transition);
+    display: inline-block;
+    box-shadow: 0 10px 30px rgba(211, 47, 47, 0.2);
+}
+
+.btn-large:hover {
+    background: var(--text-dark);
+    transform: scale(1.05);
+}
+
+/* --- Footer (Brand Classic) --- */
+footer {
+    padding: 1.5rem 8%; /* Reduced height by half again */
+    background: var(--primary-red);
+    color: white;
+    text-align: center;
+}
+
+footer .footer-logo img {
+    height: 28px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 1.2rem;
+}
+
+footer p {
+    opacity: 0.95; /* Better readability */
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 4.5rem; }
+}
